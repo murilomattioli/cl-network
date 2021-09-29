@@ -11,7 +11,7 @@ export const InputStyles = styled.div<InputProps>`
   max-height: 28px;
   display: flex;
   flex: 1;
-  box-shadow: 0 0 0 1px inset ${Colors.grey};
+  box-shadow: 0 0 0 1px inset ${() => Colors.grey};
   border-radius: 4px;
 
   input {
@@ -21,11 +21,12 @@ export const InputStyles = styled.div<InputProps>`
     padding: 0px;
     border: none;
     background: transparent;
-    color: ${Colors.black};
+    color: ${() => Colors.black};
+    padding-right: 10px;
     padding-left: 10px;
 
     ::placeholder { 
-      color: ${Colors.grey};
+      color: ${() => Colors.grey};
     }
   }
   

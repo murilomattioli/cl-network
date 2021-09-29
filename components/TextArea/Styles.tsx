@@ -11,7 +11,7 @@ export const TextAreaStyles = styled.div<TextAreaProps>`
   max-height: 74px;
   display: flex;
   flex: 1;
-  box-shadow: 0 0 0 1px inset ${Colors.grey};
+  box-shadow: 0 0 0 1px inset ${() => Colors.grey};
   border-radius: 4px;
   
   textarea {
@@ -21,12 +21,13 @@ export const TextAreaStyles = styled.div<TextAreaProps>`
     padding: 0px;
     border: none;
     background: transparent;
-    color: ${Colors.black};
+    color: ${() => Colors.black};
     padding-top: 7px;
+    padding-right: 10px;
     padding-left: 10px;
     
     ::placeholder { 
-      color: ${Colors.grey};
+      color: ${() => Colors.grey};
     }
   }
   

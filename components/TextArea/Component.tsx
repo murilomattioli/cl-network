@@ -16,7 +16,7 @@ const TextAreaComponentNoMemo: React.FC<TextAreaProps> = (props) => {
     if (onChange) {
       onChange(newValue);
     }
-  }, [inputRef]);
+  }, [inputRef, onChange]);
 
   return (
     // @ts-ignore

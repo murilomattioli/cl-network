@@ -16,7 +16,7 @@ const InputComponentNoMemo: React.FC<InputProps> = (props) => {
     if (onChange) {
       onChange(newValue);
     }
-  }, [inputRef]);
+  }, [inputRef, onChange]);
 
   return (
     //@ts-ignore
