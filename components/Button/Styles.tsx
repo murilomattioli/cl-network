@@ -1,17 +1,28 @@
 import styled from "styled-components";
-import { ButtonProps, DEFAULT_BUTTON_HEIGHT, DEFAULT_BUTTON_WIDTH } from ".";
+import { ButtonProps, BUTTON_WIDTH, BUTTON_HEIGHT } from ".";
 import { Colors } from  '../../styles/Colors';
 
 export const ButtonStyles = styled.div<ButtonProps>`
   display: flex;
   flex: 1;
-  height: ${({ height }) => height || DEFAULT_BUTTON_HEIGHT}px;
-  min-height: ${({ height }) => height || DEFAULT_BUTTON_HEIGHT}px;
-  max-height: ${({ height }) => height || DEFAULT_BUTTON_HEIGHT}px;
-  width: ${() => DEFAULT_BUTTON_WIDTH}px;
-  min-width: ${() => DEFAULT_BUTTON_WIDTH}px;
-  max-width: ${() => DEFAULT_BUTTON_WIDTH}px;
   background: ${() => Colors.black};
+  height: ${({ height }) => height || BUTTON_HEIGHT.default}px;
+  min-height: ${({ height }) => height || BUTTON_HEIGHT.default}px;
+  max-height: ${({ height }) => height || BUTTON_HEIGHT.default}px;
+  width: ${() => BUTTON_WIDTH.default}px;
+  min-width: ${() => BUTTON_WIDTH.default}px;
+  max-width: ${() => BUTTON_WIDTH.default}px;
+  
+  &.--btn-icon {
+    height: ${() => BUTTON_HEIGHT.icon}px;
+    min-height: ${() => BUTTON_HEIGHT.icon}px;
+    max-height: ${() => BUTTON_HEIGHT.icon}px;
+    width: ${() => BUTTON_WIDTH.icon}px;
+    min-width: ${() => BUTTON_WIDTH.icon}px;
+    max-width: ${() => BUTTON_WIDTH.icon}px;
+    align-items: center;
+    justify-content: center;
+  }
 
   .btn-text-wrapper {
     display: flex;
@@ -37,5 +48,8 @@ export const ButtonStyles = styled.div<ButtonProps>`
       padding-left: 10px;
     }
   }
-  
+
+  :active {
+    background: ${() => Colors["--action-black"]};
+  }
 `;
