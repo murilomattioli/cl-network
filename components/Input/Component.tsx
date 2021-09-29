@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { InputProps } from '.';
 import { InputStyles } from './Styles';
 
@@ -10,7 +10,6 @@ const InputComponentNoMemo: React.FC<InputProps> = (props) => {
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
 
-
   const handleOnChange = useCallback(() => {
     const newValue: string | undefined = inputRef.current?.value;
 
@@ -20,11 +19,10 @@ const InputComponentNoMemo: React.FC<InputProps> = (props) => {
   }, [inputRef]);
 
   return (
-    <div className='input'>
-      <InputStyles className='input-styles'>
-        <input ref={inputRef} placeholder={placeholder} value={value} onChange={handleOnChange} onPaste={handleOnChange} />
-      </InputStyles>
-    </div>
+    //@ts-ignore
+    <InputStyles {...props}>
+      <input ref={inputRef} placeholder={placeholder} value={value} onChange={handleOnChange} />
+    </InputStyles>
   );
 }
 
