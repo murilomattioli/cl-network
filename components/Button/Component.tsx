@@ -5,7 +5,6 @@ import { ButtonStyles } from './Styles';
 const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
   const {
     text,
-    className,
     onClick,
   } = props;
 
@@ -15,11 +14,9 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
     }
   }, [onClick]);
 
-  const buttonClassName = useMemo(() => `btn ${className}`, [className]);
-
   return (
     //@ts-ignore
-    <ButtonStyles {...props} className={buttonClassName} onClick={handleOnClick}>
+    <ButtonStyles {...props} onClick={handleOnClick}>
       <div className='btn-text-wrapper'>
         <span className='text'>{text}</span>
       </div>
@@ -29,6 +26,7 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
 
 const propsAreEqual = (prevProps: ButtonProps , nextProps: ButtonProps): boolean => (
   prevProps.onClick === nextProps.onClick &&
+  prevProps.className === nextProps.className &&
   prevProps.height === nextProps.height &&
   prevProps.text === nextProps.text
 );
