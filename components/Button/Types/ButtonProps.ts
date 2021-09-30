@@ -3,5 +3,6 @@ export interface ButtonProps {
   icon?: 'edit' | 'trash';
   height?: number;
   className?: string;
+  disabled?: boolean;
   onClick?: (value?: string) => void;
 }

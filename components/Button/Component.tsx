@@ -9,6 +9,7 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
     className,
     text,
     icon,
+    disabled,
     onClick,
   } = props;
 
@@ -28,15 +29,18 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
     } else return '';
   }, [icon]);
 
+  const buttonClassName = useMemo(() => `button${className ? ' '+className : ''}${showIcon ? ' --btn-icon' : ''}${disabled ? ' --btn-disabled' : ''}`
+  , [className, showIcon, disabled]);
+
   return (
     //@ts-ignore
-    <ButtonStyles {...props} className={`${className} button${showIcon ? ' --btn-icon' : ''}`} onClick={handleOnClick}>
+    <ButtonStyles {...props} className={buttonClassName} onClick={handleOnClick}>
       {showIcon && iconName && (
         <FontAwesomeIcon icon={iconName} style={{ fontSize: 16, color: Colors.white}} />
       )}
       {showText && (
         <div className='btn-text-wrapper'>
-            <span className='text'>{text}</span>
+          <span className='text'>{text}</span>
         </div>
       )}
     </ButtonStyles>

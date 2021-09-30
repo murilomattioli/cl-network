@@ -1,2 +1,2 @@
-export * from './ButtonProps';
 export * from './ButtonIcons';
+export * from './ButtonProps';

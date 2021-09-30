@@ -2,5 +2,6 @@ export interface InputProps {
   value?: string;
   placeholder?: string;
   className?: string;
-  onChange?: (value?: string) => void;
+  autoFocus?: boolean;
+  onChangeValue?: (value: string) => void;
 }

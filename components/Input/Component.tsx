@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { InputProps } from '.';
 import { InputStyles } from './Styles';
 
@@ -6,29 +6,34 @@ const InputComponentNoMemo: React.FC<InputProps> = (props) => {
   const {
     value,
     placeholder,
-    onChange,
+    autoFocus,
+    onChangeValue = () => {},
   } = props;
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef: React.RefObject<HTMLInputElement> = useRef(null);
 
-  const handleOnChange = useCallback(() => {
-    const newValue: string | undefined = inputRef.current?.value;
-
-    if (onChange) {
-      onChange(newValue);
-    }
-  }, [inputRef, onChange]);
+  const handleOnChange = useCallback((): void => {
+    const inputValue: string = inputRef?.current?.value || '';
+    onChangeValue(inputValue);
+  }, [inputRef]);
 
   return (
     //@ts-ignore
     <InputStyles {...props}>
-      <input ref={inputRef} placeholder={placeholder} value={value} onChange={handleOnChange} />
+      <input 
+        ref={inputRef}
+        placeholder={placeholder}
+        value={value || ''}
+        onChange={handleOnChange}
+        autoFocus={autoFocus}
+      />
     </InputStyles>
   );
 }
 
 const propsAreEqual = (prevProps: InputProps , nextProps: InputProps): boolean => (
-  prevProps.onChange === nextProps.onChange &&
+  prevProps.onChangeValue === nextProps.onChangeValue &&
   prevProps.placeholder === nextProps.placeholder &&
+  prevProps.className === nextProps.className &&
   prevProps.value === nextProps.value
 );
 

@@ -24,6 +24,11 @@ export const ButtonStyles = styled.div<ButtonProps>`
     justify-content: center;
   }
 
+  &.--btn-disabled {
+    pointer-events: none;
+    opacity: .3;
+  }
+
   .btn-text-wrapper {
     display: flex;
     flex: 1;
@@ -47,6 +52,11 @@ export const ButtonStyles = styled.div<ButtonProps>`
       padding-right: 10px;
       padding-left: 10px;
     }
+  }
+
+
+  :hover {
+    cursor: pointer;
   }
 
   :active {
