@@ -1,6 +1,8 @@
+import { ButtonIcons } from ".";
+
 export interface ButtonProps {
   text?: string;
-  icon?: 'edit' | 'trash';
+  icon?: ButtonIcons;
   height?: number;
   className?: string;
   disabled?: boolean;

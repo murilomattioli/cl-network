@@ -1,1 +1,1 @@
-export type ButtonIcons = 'edit' | 'trash';
+export type ButtonIcons = 'edit' | 'trash' | 'signOutAlt';

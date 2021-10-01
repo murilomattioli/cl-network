@@ -4,9 +4,9 @@ import { TextAreaStyles } from './Styles';
 
 const TextAreaComponentNoMemo: React.FC<TextAreaProps> = (props) => {
   const {
-    value,
-    placeholder,
     onChangeValue = () => {},
+    children,
+    ...rest
   } = props;
   const inputRef: React.RefObject<HTMLTextAreaElement> = useRef(null);
 
@@ -18,7 +18,7 @@ const TextAreaComponentNoMemo: React.FC<TextAreaProps> = (props) => {
   return (
     // @ts-ignore
     <TextAreaStyles {...props}>
-      <textarea ref={inputRef} placeholder={placeholder} value={value || ''} onChange={handleOnChange} />
+      <textarea ref={inputRef} {...rest} onChange={handleOnChange} />
     </TextAreaStyles>
   );
 }

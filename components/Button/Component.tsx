@@ -35,14 +35,16 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
   return (
     //@ts-ignore
     <ButtonStyles {...props} className={buttonClassName} onClick={handleOnClick}>
-      {showIcon && iconName && (
-        <FontAwesomeIcon icon={iconName} style={{ fontSize: 16, color: Colors.white}} />
-      )}
-      {showText && (
-        <div className='btn-text-wrapper'>
-          <span className='text'>{text}</span>
-        </div>
-      )}
+      <div className='btn-content'>
+        {showIcon && iconName && (
+          <FontAwesomeIcon icon={iconName} style={{ fontSize: 16, color: Colors.white}} />
+        )}
+        {showText && (
+          <div className='btn-text-wrapper'>
+            <span className='text'>{text}</span>
+          </div>
+        )}
+      </div>
     </ButtonStyles>
   );
 }

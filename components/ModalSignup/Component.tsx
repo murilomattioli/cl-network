@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { 
   ModalSignupProps,
   SIGN_UP_MODAL_CONFIRM_BUTTON_TEXT,
@@ -21,19 +21,24 @@ const ModalSignupComponentNoMemo: React.FC<ModalSignupProps> = (props) => {
   const [setUser] = userHooks.useSetUser();
   const [validateUser] = userHooks.useValidateUser();
   const [getUser] = userHooks.useGetUser();
+  const [authUserWithRedirect] = userHooks.useAuthUserWithRedirect();
 
   const handleConfirmSignUp = useCallback(() => {
     const newUser: Partial<UserType> = { username };
     const isValidUser = validateUser(newUser);
     
     if (isValidUser) {
-      //@ts-ignore
-      setUser(newUser);
-      alert(`Welcome to CodeLeap network, ${getUser()?.username}!`);
+      new Promise((resolve) => {
+        //@ts-ignore
+        setUser(newUser);
+        resolve(newUser);
+      }).then(() => {
+        authUserWithRedirect('Network');
+      });
     } else {
       alert('Invalid username');
     }
-  }, [username, setUser, validateUser, getUser]);
+  }, [username, setUser, validateUser, getUser, authUserWithRedirect]);
 
   return (
     //@ts-ignore

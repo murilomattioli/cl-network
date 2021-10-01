@@ -4,10 +4,9 @@ import { InputStyles } from './Styles';
 
 const InputComponentNoMemo: React.FC<InputProps> = (props) => {
   const {
-    value,
-    placeholder,
-    autoFocus,
     onChangeValue = () => {},
+    children,
+    ...rest
   } = props;
   const inputRef: React.RefObject<HTMLInputElement> = useRef(null);
 
@@ -19,13 +18,7 @@ const InputComponentNoMemo: React.FC<InputProps> = (props) => {
   return (
     //@ts-ignore
     <InputStyles {...props}>
-      <input 
-        ref={inputRef}
-        placeholder={placeholder}
-        value={value || ''}
-        onChange={handleOnChange}
-        autoFocus={autoFocus}
-      />
+      <input ref={inputRef} {...rest} onChange={handleOnChange} />
     </InputStyles>
   );
 }

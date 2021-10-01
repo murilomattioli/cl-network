@@ -5,6 +5,7 @@ import { Colors } from  '../../styles/Colors';
 export const ButtonStyles = styled.div<ButtonProps>`
   display: flex;
   flex: 1;
+  flex-direction: column;
   background: ${() => Colors.black};
   height: ${({ height }) => height || BUTTON_HEIGHT.default}px;
   min-height: ${({ height }) => height || BUTTON_HEIGHT.default}px;
@@ -20,8 +21,11 @@ export const ButtonStyles = styled.div<ButtonProps>`
     width: ${() => BUTTON_WIDTH.icon}px;
     min-width: ${() => BUTTON_WIDTH.icon}px;
     max-width: ${() => BUTTON_WIDTH.icon}px;
-    align-items: center;
-    justify-content: center;
+
+    .btn-content {
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   &.--btn-disabled {
@@ -29,37 +33,44 @@ export const ButtonStyles = styled.div<ButtonProps>`
     opacity: .3;
   }
 
-  .btn-text-wrapper {
+  .btn-content {
     display: flex;
     flex: 1;
-    outline: none;
-    padding: 0px;
-    border: none;
-    height: 100%;
-    background: transparent;
-    color: ${() => Colors.black};
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    background: ${() => Colors.black};
 
-    span.text {
-      color: ${() => Colors.white};
-      font-weight: 700;
-      font-size: 16px;
-      white-space: nowrap;
+    .btn-text-wrapper {
+      display: flex;
+      flex: 1;
+      outline: none;
+      padding: 0px;
+      border: none;
+      height: 100%;
+      background: transparent;
+      color: ${() => Colors.black};
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
-      text-overflow: ellipsis;
-      padding-right: 10px;
-      padding-left: 10px;
+
+      span.text {
+        color: ${() => Colors.white};
+        font-weight: 700;
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
     }
-  }
 
 
-  :hover {
-    cursor: pointer;
-  }
+    &:hover {
+      cursor: pointer;
+      background: ${() => Colors["--hover-black"]};
+    }
 
-  :active {
-    background: ${() => Colors["--action-black"]};
+    &:active, &:focus {
+      background: ${() => Colors["--action-black"]};
+    }
   }
 `;
