@@ -7,8 +7,9 @@ type ReturnProps = [() => UserType];
 export default (): ReturnProps => {
   const findUserLocalStorage = useCallback((): UserType => {
     const userKey: LocalStorageUserKey = 'user';
+    const name = typeof window !== 'undefined' ? localStorage?.getItem(userKey) : '';
     const user: UserType = {
-      username: localStorage.getItem(userKey) || ''
+      username: name || ''
     }
 
     return user;
