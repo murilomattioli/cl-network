@@ -11,7 +11,7 @@ export const PostManagerStyles = styled.div<PostManagerProps>`
   max-height: ${() => POST_CREATOR_HEIGHT}px;
   box-shadow: 0 0 0 1px inset ${() => Colors["--border-grey"]};
   
-  .post-creator-content {
+  .post-manager-content {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -27,7 +27,7 @@ export const PostManagerStyles = styled.div<PostManagerProps>`
       }
     }
 
-    .post-creator-fields {
+    .post-manager-fields {
       .field {
         &.--field-title {
           margin-bottom: 20px;

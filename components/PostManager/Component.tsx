@@ -11,7 +11,7 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
   const [postTitle, setPostTitle] = useState<string>();
   const [postContent, setPostContent] = useState<string>();
   const [getUser] = userHooks.useGetUser();
-  const PostManagerClassName = useMemo(() => `post-creator ${className}`, []);
+  const PostManagerClassName = useMemo(() => `post-manager ${className}`, []);
   
   const postPostObject = useMemo((): Partial<PostPostObject> => ({
     content: postContent,
@@ -41,18 +41,18 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
       //Save post
       console.log('postObject>', postPostObject);
     } else {
-      console.error('Invalid post object.')
+      console.error('Invalid post object.');
     }
   }, [postPostObject]);
 
   return (
     //@ts-ignore
     <PostManagerStyles {...props} className={PostManagerClassName}>
-      <div className='post-creator-content'>
+      <div className='post-manager-content'>
         <div className='title-wrapper'>
           <span className='title'>{'What’s on your mind?'}</span>
         </div>
-        <div className='post-creator-fields'>
+        <div className='post-manager-fields'>
           <div className='field --field-title'>
             <div className='field-label-wrapper'>
               <span className='field-label'>{'Title'}</span>
