@@ -1,6 +1,6 @@
 import { ButtonIcons } from "./ButtonIcons";
 
-export interface ButtonProperties {
+export type ButtonProperties = {
   text?: string;
   icon?: ButtonIcons;
   height?: number;
