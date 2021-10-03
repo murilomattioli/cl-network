@@ -1,16 +1,9 @@
 import styled from "styled-components";
 import { BUTTON_WIDTH, BUTTON_HEIGHT } from ".";
 import { Colors } from '../../styles/Colors';
+import { ButtonProperties } from "./Component";
 
-export const ButtonStyles = styled.div<{
-  text?: string;
-  icon?: 'edit' | 'trash' | 'signOutAlt';
-  height?: number;
-  className?: string;
-  disabled?: boolean;
-  color?: 'black' | 'white';
-  onClick?: (value?: string) => void
-}>`
+export const ButtonStyles = styled.div<ButtonProperties>`
   display: flex;
   flex: 1;
   flex-direction: column;

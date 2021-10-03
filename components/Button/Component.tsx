@@ -4,7 +4,7 @@ import { DEFAULT_ICONS } from '.';
 import { ButtonStyles } from './Styles';
 import { Colors } from '../../styles/Colors';
 
-const ButtonComponentNoMemo: React.FC<{
+export interface ButtonProperties {
   text?: string;
   icon?: 'edit' | 'trash' | 'signOutAlt';
   height?: number;
@@ -12,7 +12,9 @@ const ButtonComponentNoMemo: React.FC<{
   disabled?: boolean;
   color?: 'black' | 'white';
   onClick?: (value?: string) => void
-}> = (props) => {
+};
+
+const ButtonComponentNoMemo: React.FC<ButtonProperties> = (props) => {
   const {
     className,
     text,
