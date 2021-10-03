@@ -15,6 +15,7 @@ const PageSignupComponentNoMemo: React.FC<SignupProps> = props => {
 
   return (
     <PageSignupStyles {...props} className={signupClassName}>
+      <title>CL - Signup</title>
       <ModalSignup />
     </PageSignupStyles>
   )
