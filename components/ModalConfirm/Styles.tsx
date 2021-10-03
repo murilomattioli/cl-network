@@ -33,6 +33,10 @@ export const ModalConfirmStyles = styled.div<ModalConfirmProps>`
     box-shadow: 0 0 0 1px inset ${Colors["grey-mid"]};
     background: ${() => Colors.white};
     padding: 0 58px;
+
+    @media (max-width: 768px) {
+      padding: 0 20px;
+    }
   }
 
   .title-wrapper {
@@ -60,6 +64,12 @@ export const ModalConfirmStyles = styled.div<ModalConfirmProps>`
       flex-direction: column;
       background: transparent;
       overflow: hidden;
+    }
+
+    
+
+    @media (max-width: 480px) {
+      justify-content: space-between;
     }
   }
 `;
