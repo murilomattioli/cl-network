@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import server from "../library/server";
 import { NETWORK_POSTS_END_POINT_URL } from "./Constants";
-import networkPostsHooks from "../../hooks/userHooks/networkPostsHooks";
+import networkPostsHooks from "../../hooks/networkPostsHooks";
 
 type ReturnProps = [(id: number) => Promise<void>];
 
