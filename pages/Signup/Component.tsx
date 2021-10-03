@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo } from 'react';
+import { SignupProps } from '.';
 import { ModalSignup } from '../../components/ModalSignup';
 import userHooks from '../../hooks/userHooks';
 import { PageSignupStyles } from './Styles';
-import { SignupProps } from './Types';
 
 const PageSignupComponentNoMemo: React.FC<SignupProps> = props => {
   const { className } = props;

@@ -1,10 +1,12 @@
 import React, { useCallback, useMemo } from 'react';
-import { NetworkProps } from './types';
 import { PageNetworkComponent } from './Component';
 import { useRouter } from 'next/dist/client/router';
 import { ModalConfirm, ModalCustom, PostManager } from '../../components';
 import { DELETE_NETWORK_POST_CONFIRM_TITLE } from './Constants';
 import networkPostsHooks from '../../hooks/networkPostsHooks';
+export interface NetworkProps {
+  className?: string,
+};
 
 const PageNetwork: React.FC<NetworkProps> = props => {
   const router = useRouter();

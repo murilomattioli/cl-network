@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Colors } from  '../../styles/Colors';
-import { SignupProps } from "./Types";
+import { SignupProps } from ".";
+import { Colors } from '../../styles/Colors';
 
 export const PageSignupStyles = styled.div<SignupProps>`
   display: flex;
