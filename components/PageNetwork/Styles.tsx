@@ -21,7 +21,7 @@ export const PageNetworkStyles = styled.div<NetworkProps>`
     flex: 1;
     flex-direction: column;
     width: 100%;
-    max-width: ${NETWORK_CONTENT_DEFAULT_MAX_WIDTH}px;
+    max-width: ${() => NETWORK_CONTENT_DEFAULT_MAX_WIDTH}px;
     background: ${() => Colors.white};
     overflow-x: hidden;
     overflow-y: auto;
