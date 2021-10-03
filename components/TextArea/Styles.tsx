@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { TextAreaProps } from ".";
-import { Colors } from  '../../styles/Colors';
+import { Colors } from '../../styles/Colors';
+import { TextAreaProps } from "./Component";
 import { TEXTAREA_DEFAULT_HEIGHT } from "./Constants";
 
 export const TextAreaStyles = styled.div<TextAreaProps>`
-  * {
+* {
     border-radius: 4px;
   };
   display: flex;

@@ -1,6 +1,8 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { TextAreaProps } from '.';
+import React, { InputHTMLAttributes, useCallback, useRef } from 'react';
 import { TextAreaStyles } from './Styles';
+export interface TextAreaProps extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
+  onChangeValue?: (value?: string) => void;
+}
 
 const TextAreaComponentNoMemo: React.FC<TextAreaProps> = (props) => {
   const {
