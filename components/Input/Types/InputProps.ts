@@ -1,7 +1,5 @@
-export interface InputProps {
-  value?: string;
-  placeholder?: string;
-  className?: string;
-  autoFocus?: boolean;
+import { InputHTMLAttributes } from "react";
+
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   onChangeValue?: (value: string) => void;
-}
+};

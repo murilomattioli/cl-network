@@ -1,22 +1,33 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { CREATE_POST_CONTENT_PLACEHOLDER, CREATE_POST_TITLE_PLACEHOLDER, PostManagerProps, PostPostObject, PostProperties } from '.';
+import { CREATE_POST_CONTENT_PLACEHOLDER, CREATE_POST_TITLE_PLACEHOLDER, PostManagerProps, NetworkPostProps } from '.';
 import { Button, Input, TextArea } from '..';
+import { BodyPostNetworkPost } from '../../actions/NetworkPosts/types';
 import userHooks from '../../hooks/userHooks';
+import networkPostsHooks from '../../hooks/networkPostsHooks';
 import { PostManagerStyles } from './Styles';
 
 const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
   const {
     className,
+    children,
+    onSave = () => { },
+    ...postProps
   } = props;
-  const [postTitle, setPostTitle] = useState<string>();
-  const [postContent, setPostContent] = useState<string>();
+  const [postTitle, setPostTitle] = useState<string | undefined>(postProps?.title);
+  const [postContent, setPostContent] = useState<string | undefined>(postProps?.content);
   const [getUser] = userHooks.useGetUser();
+  const [saveNetworkPost] = networkPostsHooks.useSaveNetworkPost();
   const PostManagerClassName = useMemo(() => `post-manager ${className}`, []);
-  
-  const postPostObject = useMemo((): Partial<PostPostObject> => ({
-    content: postContent,
-    title: postTitle,
-    username: getUser()?.username
+
+  const clearInputs = useCallback(() => {
+    setPostTitle('');
+    setPostContent('');
+  }, [setPostTitle, setPostContent]);
+
+  const buildBodyNetworkPost = useCallback((): BodyPostNetworkPost => ({
+    content: `${postContent ? postContent : ''}`,
+    title: `${postTitle ? postTitle : ''}`,
+    username: `${getUser()?.username}`
   }), [postContent, postTitle, getUser]);
 
   const validateRequiredStrings: (strings: Array<string | null | undefined>) => boolean = useCallback((strings) => {
@@ -30,20 +41,24 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
     return true;
   }, [])
 
-  const canSavePost: (post: Partial<PostPostObject>) => boolean = useCallback(({ content, title, username }) => (
+  const canSaveNetworkPost: (post: Partial<BodyPostNetworkPost>) => boolean = useCallback(({ content, title, username }) => (
     validateRequiredStrings([content, title, username])
   ), [validateRequiredStrings]);
 
   const handleClickSavePost = useCallback(() => {
-    const canSave = canSavePost(postPostObject);
+    const networkPostPostObject = buildBodyNetworkPost();
+    const method = !!postProps?.id ? 'PATCH' : 'POST';
+    const newNetworkPost = method === 'PATCH' ? { id: postProps?.id, ...networkPostPostObject } : networkPostPostObject;
+    const canSave = canSaveNetworkPost(networkPostPostObject);
 
     if (canSave) {
       //Save post
-      console.log('postObject>', postPostObject);
+      saveNetworkPost(newNetworkPost).then(clearInputs);
+      onSave();
     } else {
-      console.error('Invalid post object.');
+      alert('Invalid post object.\nPlease, check input values and try again.');
     }
-  }, [postPostObject]);
+  }, [buildBodyNetworkPost, saveNetworkPost]);
 
   return (
     //@ts-ignore
@@ -87,7 +102,7 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
   );
 }
 
-const propsAreEqual = (prevProps: PostManagerProps , nextProps: PostManagerProps): boolean => (
+const propsAreEqual = (prevProps: PostManagerProps, nextProps: PostManagerProps): boolean => (
   prevProps.className === nextProps.className
 );
 

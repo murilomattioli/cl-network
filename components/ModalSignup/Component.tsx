@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { 
+import {
   ModalSignupProps,
   SIGN_UP_MODAL_CONFIRM_BUTTON_TEXT,
   SIGN_UP_MODAL_INPUT_LABEL,
@@ -26,7 +26,7 @@ const ModalSignupComponentNoMemo: React.FC<ModalSignupProps> = (props) => {
   const handleConfirmSignUp = useCallback(() => {
     const newUser: Partial<UserType> = { username };
     const isValidUser = validateUser(newUser);
-    
+
     if (isValidUser) {
       new Promise((resolve) => {
         //@ts-ignore
@@ -43,7 +43,7 @@ const ModalSignupComponentNoMemo: React.FC<ModalSignupProps> = (props) => {
   return (
     //@ts-ignore
     <ModalSignupStyles {...props} className={ModalSignupClassName}>
-      <div className='content'> 
+      <div className='content'>
         <div className='title-wrapper'>
           <span className='title'>{SIGN_UP_MODAL_TITLE}</span>
         </div>
@@ -70,7 +70,7 @@ const ModalSignupComponentNoMemo: React.FC<ModalSignupProps> = (props) => {
   );
 }
 
-const propsAreEqual = (prevProps: ModalSignupProps , nextProps: ModalSignupProps): boolean => (
+const propsAreEqual = (prevProps: ModalSignupProps, nextProps: ModalSignupProps): boolean => (
   prevProps.className === nextProps.className
 );
 

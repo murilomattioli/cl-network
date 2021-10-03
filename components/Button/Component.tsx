@@ -10,6 +10,7 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
     text,
     icon,
     disabled,
+    color = 'black',
     onClick,
   } = props;
 
@@ -29,15 +30,17 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
     } else return '';
   }, [icon]);
 
-  const buttonClassName = useMemo(() => `button${className ? ' '+className : ''}${showIcon ? ' --btn-icon' : ''}${disabled ? ' --btn-disabled' : ''}`
-  , [className, showIcon, disabled]);
+  const buttonClassName = useMemo(() => `button${className ? ' ' + className : ''}${showIcon ? ' --btn-icon' : ''}${disabled ? ' --btn-disabled' : ''}`
+    , [className, showIcon, disabled]);
+
+  const iconColor = useMemo(() => (color === 'black' ? 'white' : 'black'), [color]);
 
   return (
     //@ts-ignore
     <ButtonStyles {...props} className={buttonClassName} onClick={handleOnClick}>
       <div className='btn-content'>
         {showIcon && iconName && (
-          <FontAwesomeIcon icon={iconName} style={{ fontSize: 16, color: Colors.white}} />
+          <FontAwesomeIcon icon={iconName} style={{ fontSize: 16, color: Colors?.[iconColor] }} />
         )}
         {showText && (
           <div className='btn-text-wrapper'>
@@ -49,7 +52,7 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
   );
 }
 
-const propsAreEqual = (prevProps: ButtonProps , nextProps: ButtonProps): boolean => (
+const propsAreEqual = (prevProps: ButtonProps, nextProps: ButtonProps): boolean => (
   prevProps.onClick === nextProps.onClick &&
   prevProps.className === nextProps.className &&
   prevProps.height === nextProps.height &&

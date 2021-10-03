@@ -1,42 +1,45 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import uniqueId from 'lodash/uniqueId';
 import { PostListProps } from '.';
-import { PostCard, PostProperties } from '..';
-import userHooks from '../../hooks/userHooks';
+import { PostCard } from '..';
+import networkPostsHooks from '../../hooks/networkPostsHooks';
+import { InitialStateProps } from '../../redux/types';
 import { PostListStyles } from './Styles';
 
 const PostListComponentNoMemo: React.FC<PostListProps> = (props) => {
   const {
     className,
   } = props;
-  const [getUser] = userHooks.useGetUser();
-  const user = useMemo(() => getUser(), []);
+  const [loadNetworkPosts] = networkPostsHooks.useLoadNetworkPosts();
+  const networkPosts = useSelector((state: InitialStateProps) => state.networkPosts);
   const PostListClassName = useMemo(() => `post-list ${className}`, []);
-  const posts: Array<Partial<PostProperties>> = Array(10).fill(10).map((_v, i) => ({
-    id: i+1,
-    title: `Title ${i+1}`,
-    content: `Lorem ipsum ${i+1}...`,
-    created_datetime: new Date(),
-    username: i < 3 ? user?.username : 'John Doe'
-  }));
+
+  useEffect(() => {
+    loadNetworkPosts();
+  }, []);
 
   return (
     //@ts-ignore
     <PostListStyles {...props} className={PostListClassName}>
       <div className='post-list-content'>
-        {posts.map((post, index) => (
-          <>
-            <div className='post-item'> 
-              <PostCard key={post.id} {...post} />
-            </div>
-            {(index + 1) === posts.length && <div className='end-posts' />}
-          </>
-        ))}
+        {networkPosts.map((post, index) => {
+          const key = uniqueId();
+          return (
+            <React.Fragment key={key}>
+              <div className='post-item'>
+                <PostCard {...post} />
+              </div>
+              {(index + 1) === networkPosts.length && <div className='end-posts' />}
+            </React.Fragment>
+          )
+        })}
       </div>
     </PostListStyles>
   );
 }
 
-const propsAreEqual = (prevProps: PostListProps , nextProps: PostListProps): boolean => (
+const propsAreEqual = (prevProps: PostListProps, nextProps: PostListProps): boolean => (
   prevProps.className === nextProps.className
 );
 

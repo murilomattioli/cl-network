@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { ButtonProps, BUTTON_WIDTH, BUTTON_HEIGHT } from ".";
-import { Colors } from  '../../styles/Colors';
+import { Colors } from '../../styles/Colors';
 
 export const ButtonStyles = styled.div<ButtonProps>`
   display: flex;
   flex: 1;
   flex-direction: column;
-  background: ${() => Colors.black};
+  background: ${({ color = 'black' }) => Colors?.[color]};
   height: ${({ height }) => height || BUTTON_HEIGHT.default}px;
   min-height: ${({ height }) => height || BUTTON_HEIGHT.default}px;
   max-height: ${({ height }) => height || BUTTON_HEIGHT.default}px;
@@ -36,7 +36,8 @@ export const ButtonStyles = styled.div<ButtonProps>`
   .btn-content {
     display: flex;
     flex: 1;
-    background: ${() => Colors.black};
+    background: ${({ color = 'black' }) => Colors?.[color]};
+    box-shadow: 0 0 0 1px inset ${({ color = 'black' }) => (color === 'white' ? Colors.black : 'transparent')};
 
     .btn-text-wrapper {
       display: flex;
@@ -46,13 +47,13 @@ export const ButtonStyles = styled.div<ButtonProps>`
       border: none;
       height: 100%;
       background: transparent;
-      color: ${() => Colors.black};
+      color: ${({ color = 'black' }) => Colors?.[color]};
       align-items: center;
       justify-content: center;
       overflow: hidden;
 
       span.text {
-        color: ${() => Colors.white};
+        color: ${({ color = 'black' }) => Colors?.[color === 'black' ? 'white' : 'black']};
         font-weight: 700;
         font-size: 16px;
         white-space: nowrap;
@@ -63,14 +64,13 @@ export const ButtonStyles = styled.div<ButtonProps>`
       }
     }
 
-
     &:hover {
       cursor: pointer;
-      background: ${() => Colors["--hover-black"]};
+      background: ${({ color = 'black' }) => Colors[`--hover-${color}`]};
     }
 
     &:active, &:focus {
-      background: ${() => Colors["--action-black"]};
+      background: ${({ color = 'black' }) => Colors[`--action-${color}`]};
     }
   }
 `;

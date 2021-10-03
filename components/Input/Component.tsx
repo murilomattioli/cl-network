@@ -1,12 +1,12 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { InputProps } from '.';
 import { InputStyles } from './Styles';
 
 const InputComponentNoMemo: React.FC<InputProps> = (props) => {
   const {
-    onChangeValue = () => {},
+    onChangeValue = () => { },
     children,
-    ...rest
+    ...inputProps
   } = props;
   const inputRef: React.RefObject<HTMLInputElement> = useRef(null);
 
@@ -18,12 +18,12 @@ const InputComponentNoMemo: React.FC<InputProps> = (props) => {
   return (
     //@ts-ignore
     <InputStyles {...props}>
-      <input ref={inputRef} {...rest} onChange={handleOnChange} />
+      <input {...inputProps} ref={inputRef} onChange={handleOnChange} />
     </InputStyles>
   );
 }
 
-const propsAreEqual = (prevProps: InputProps , nextProps: InputProps): boolean => (
+const propsAreEqual = (prevProps: InputProps, nextProps: InputProps): boolean => (
   prevProps.onChangeValue === nextProps.onChangeValue &&
   prevProps.placeholder === nextProps.placeholder &&
   prevProps.className === nextProps.className &&

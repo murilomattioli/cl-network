@@ -1,5 +1,5 @@
-import { PostProperties } from "../..";
+import { NetworkPostProps } from "../..";
 
 export type PostCardProps = {
   className?: string,
-} & Partial<PostProperties>;
+} & NetworkPostProps;

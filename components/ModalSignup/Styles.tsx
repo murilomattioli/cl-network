@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ModalSignupProps, MODAL_CENTER_DEFAULT_HEIGHT, MODAL_CENTER_DEFAULT_WIDTH } from ".";
-import { Colors } from  '../../styles/Colors';
+import { Colors } from '../../styles/Colors';
 
 export const ModalSignupStyles = styled.div<ModalSignupProps>`
   display: flex;
@@ -26,8 +26,7 @@ export const ModalSignupStyles = styled.div<ModalSignupProps>`
     height: ${() => MODAL_CENTER_DEFAULT_HEIGHT}px;
     min-height: ${() => MODAL_CENTER_DEFAULT_HEIGHT}px;
     max-height: ${() => MODAL_CENTER_DEFAULT_HEIGHT}px;
-    width: ${() => MODAL_CENTER_DEFAULT_WIDTH}px;
-    min-width: ${() => MODAL_CENTER_DEFAULT_WIDTH}px;
+    width: 92vw;
     max-width: ${() => MODAL_CENTER_DEFAULT_WIDTH}px;
     box-shadow: 0 0 0 1px inset ${Colors["grey-mid"]};
     background: ${() => Colors.white};

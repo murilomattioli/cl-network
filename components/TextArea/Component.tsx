@@ -4,9 +4,9 @@ import { TextAreaStyles } from './Styles';
 
 const TextAreaComponentNoMemo: React.FC<TextAreaProps> = (props) => {
   const {
-    onChangeValue = () => {},
+    onChangeValue = () => { },
     children,
-    ...rest
+    ...textareaProps
   } = props;
   const inputRef: React.RefObject<HTMLTextAreaElement> = useRef(null);
 
@@ -18,12 +18,12 @@ const TextAreaComponentNoMemo: React.FC<TextAreaProps> = (props) => {
   return (
     // @ts-ignore
     <TextAreaStyles {...props}>
-      <textarea ref={inputRef} {...rest} onChange={handleOnChange} />
+      <textarea {...textareaProps} ref={inputRef} onChange={handleOnChange} />
     </TextAreaStyles>
   );
 }
 
-const propsAreEqual = (prevProps: TextAreaProps , nextProps: TextAreaProps): boolean => (
+const propsAreEqual = (prevProps: TextAreaProps, nextProps: TextAreaProps): boolean => (
   prevProps.onChangeValue === nextProps.onChangeValue &&
   prevProps.placeholder === nextProps.placeholder &&
   prevProps.value === nextProps.value
