@@ -1,6 +1,6 @@
 import { ButtonIcons } from ".";
 
-export interface ButtonProps {
+export interface ButtonProperties {
   text?: string;
   icon?: ButtonIcons;
   height?: number;

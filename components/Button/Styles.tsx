@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { ButtonProps, BUTTON_WIDTH, BUTTON_HEIGHT } from ".";
+import { ButtonProperties, BUTTON_WIDTH, BUTTON_HEIGHT } from ".";
 import { Colors } from '../../styles/Colors';
 
-export const ButtonStyles = styled.div<ButtonProps>`
+export const ButtonStyles = styled.div<ButtonProperties>`
   display: flex;
   flex: 1;
   flex-direction: column;

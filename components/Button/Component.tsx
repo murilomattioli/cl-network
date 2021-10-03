@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ButtonProps, DEFAULT_ICONS } from '.';
+import { ButtonProperties, DEFAULT_ICONS } from '.';
 import { ButtonStyles } from './Styles';
 import { Colors } from '../../styles/Colors';
 
-const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
+const ButtonComponentNoMemo: React.FC<ButtonProperties> = (props) => {
   const {
     className,
     text,
@@ -52,7 +52,7 @@ const ButtonComponentNoMemo: React.FC<ButtonProps> = (props) => {
   );
 }
 
-const propsAreEqual = (prevProps: ButtonProps, nextProps: ButtonProps): boolean => (
+const propsAreEqual = (prevProps: ButtonProperties, nextProps: ButtonProperties): boolean => (
   prevProps.onClick === nextProps.onClick &&
   prevProps.className === nextProps.className &&
   prevProps.height === nextProps.height &&
