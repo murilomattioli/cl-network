@@ -1,4 +1,4 @@
-import { ButtonIcons } from ".";
+import { ButtonIcons } from "./ButtonIcons";
 
 export interface ButtonProperties {
   text?: string;
