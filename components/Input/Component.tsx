@@ -1,6 +1,8 @@
-import React, { useCallback, useRef } from 'react';
-import { InputProps } from '.';
+import React, { InputHTMLAttributes, useCallback, useRef } from 'react';
 import { InputStyles } from './Styles';
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  onChangeValue?: (value: string) => void;
+};
 
 const InputComponentNoMemo: React.FC<InputProps> = (props) => {
   const {
