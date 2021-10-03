@@ -1,34 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
 
-## Getting Started
+<br />
+<div align="center">
+  <a href="https://nextjs.org/">
+    <img src="public/codeleap.jpg" alt="Logo" width="80" height="80">
+  </a>
 
-First, run the development server:
+  <h3 align="center">CL Network (Frontend assessment)</h3>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+  <p align="center">
+    <br />
+    <a href="https://github.com/murilomattioli/cl-network/"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://cl-network.vercel.app/">View Demo</a>
+    ·
+    <a href="https://github.com/murilomattioli/cl-network/issues">Report Bug</a>
+  </p>
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">Project</a>
+      <ul>
+        <li><a href="#about-the-project">View Demo</a></li>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation & Run</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+<!-- ABOUT THE PROJECT -->
+## View Demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[![Product Name Screen Shot][product-screenshot]](https://cl-network.vercel.app/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Built With
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* [Next.js](https://nextjs.org/)
+* [React.js](https://reactjs.org/)
+* [Redux.js](https://redux.js.org/)
+* [Styled-Components](https://styled-components.com/)
+
+
+
+### Installation & Run
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/murilomattioli/cl-network.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install && npm run dev
+   ```
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Murilo L. Mattioli - [@mrlmttl](https://www.linkedin.com/in/mrlmttl) - murilolmattioli@gmail.com
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[product-screenshot]: public/appPreviewScreenShot.png
