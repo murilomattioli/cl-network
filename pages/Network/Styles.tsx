@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from  '../../styles/Colors';
+import { Colors } from '../../styles/Colors';
 import { NETWORK_CONTENT_DEFAULT_MAX_WIDTH } from "./Constants";
 import { NetworkProps } from "./types";
 
@@ -79,8 +79,14 @@ export const PageNetworkStyles = styled.div<NetworkProps>`
       display: flex;
       flex: 1;
       flex-direction: column;
-      padding: 44px 38px;
+      padding: 44px 0px;
       padding-bottom: 0px;
+
+      .post-manager-wrapper,.post-list-wrapper {
+        width: 92vw;
+        max-width: 724px;
+        align-self: center;
+      }
 
       .post-manager-wrapper {
         display: flex;
