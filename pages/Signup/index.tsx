@@ -1,11 +1,11 @@
 import React from 'react';
-import { PageSignupComponent } from './Component';
+import { PageSignup } from '../../components';
 export interface SignupProps {
   className?: string,
 };
 
-const PageSignup: React.FC<SignupProps> = props => {
-  return <PageSignupComponent {...props} />;
+const Signup: React.FC<SignupProps> = props => {
+  return <PageSignup {...props} />;
 }
 
-export default PageSignup;
+export default Signup;

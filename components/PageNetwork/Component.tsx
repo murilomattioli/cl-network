@@ -1,10 +1,9 @@
-import { useRouter } from 'next/dist/client/router';
 import React, { useCallback, useEffect, useMemo } from 'react';
-import { NetworkProps } from '.';
-import { Button, PostList, PostManager } from '../../components';
+import { NetworkProps } from '../../pages/Network';
+import { Button, PostList, PostManager } from '..';
 import userHooks from '../../hooks/userHooks';
-import { NETWORK_TITLE } from './Constants';
 import { PageNetworkStyles } from './Styles';
+import { NETWORK_TITLE } from '.';
 
 const PageNetworkComponentNoMemo: React.FC<NetworkProps> = props => {
   const { className = 'page-network' } = props;

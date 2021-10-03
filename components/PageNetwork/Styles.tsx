@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { NetworkProps } from ".";
+import { NETWORK_CONTENT_DEFAULT_MAX_WIDTH } from ".";
+import { NetworkProps } from "../../pages/Network";
 import { Colors } from '../../styles/Colors';
-import { NETWORK_CONTENT_DEFAULT_MAX_WIDTH } from "./Constants";
 
 export const PageNetworkStyles = styled.div<NetworkProps>`
   display: flex;

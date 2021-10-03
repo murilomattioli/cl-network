@@ -1,14 +1,12 @@
 import React, { useCallback, useMemo } from 'react';
-import { PageNetworkComponent } from './Component';
 import { useRouter } from 'next/dist/client/router';
-import { ModalConfirm, ModalCustom, PostManager } from '../../components';
-import { DELETE_NETWORK_POST_CONFIRM_TITLE } from './Constants';
+import { DELETE_NETWORK_POST_CONFIRM_TITLE, ModalConfirm, ModalCustom, PageNetwork, PostManager } from '../../components';
 import networkPostsHooks from '../../hooks/networkPostsHooks';
 export interface NetworkProps {
   className?: string,
 };
 
-const PageNetwork: React.FC<NetworkProps> = props => {
+const Network: React.FC<NetworkProps> = props => {
   const router = useRouter();
   const [deleteNetworkPost] = networkPostsHooks.useDeleteNetworkPost();
   const [findNetworkPost] = networkPostsHooks.useFindNetworkPost();
@@ -29,7 +27,7 @@ const PageNetwork: React.FC<NetworkProps> = props => {
 
   return (
     <React.Fragment>
-      <PageNetworkComponent {...props} />
+      <PageNetwork {...props} />
       {showDeleteModal && (
         <ModalConfirm title={DELETE_NETWORK_POST_CONFIRM_TITLE} onConfirm={handleDeleteNetworkPost} />
       )}
@@ -40,4 +38,4 @@ const PageNetwork: React.FC<NetworkProps> = props => {
   );
 }
 
-export default PageNetwork;
+export default Network;

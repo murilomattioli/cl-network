@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SignupProps } from ".";
+import { SignupProps } from "../../pages/Signup";
 import { Colors } from '../../styles/Colors';
 
 export const PageSignupStyles = styled.div<SignupProps>`
