@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ButtonProperties, DEFAULT_ICONS } from '.';
+import { DEFAULT_ICONS } from '.';
 import { ButtonStyles } from './Styles';
 import { Colors } from '../../styles/Colors';
 
@@ -60,11 +60,4 @@ const ButtonComponentNoMemo: React.FC<{
   );
 }
 
-const propsAreEqual = (prevProps: ButtonProperties, nextProps: ButtonProperties): boolean => (
-  prevProps.onClick === nextProps.onClick &&
-  prevProps.className === nextProps.className &&
-  prevProps.height === nextProps.height &&
-  prevProps.text === nextProps.text
-);
-
-export const ButtonComponent = React.memo(ButtonComponentNoMemo, propsAreEqual);
+export const ButtonComponent = React.memo(ButtonComponentNoMemo);

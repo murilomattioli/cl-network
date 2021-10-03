@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ButtonProperties, BUTTON_WIDTH, BUTTON_HEIGHT } from ".";
+import { BUTTON_WIDTH, BUTTON_HEIGHT } from ".";
 import { Colors } from '../../styles/Colors';
 
 export const ButtonStyles = styled.div<{
