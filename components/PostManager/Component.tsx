@@ -17,7 +17,10 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
   const [postContent, setPostContent] = useState<string | undefined>(postProps?.content);
   const [getUser] = userHooks.useGetUser();
   const [saveNetworkPost] = networkPostsHooks.useSaveNetworkPost();
+  const method = useMemo(() => (!!postProps?.id ? 'PATCH' : 'POST'), [postProps]);
   const PostManagerClassName = useMemo(() => `post-manager ${className}`, []);
+  const submitText = useMemo(() => (method === 'PATCH' ? 'SAVE' : 'CREATE'), [method]);
+  const title = useMemo(() => (method === 'PATCH' ? 'Edit' : 'What’s on your mind?'), [method]);
 
   const clearInputs = useCallback(() => {
     setPostTitle('');
@@ -47,7 +50,6 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
 
   const handleClickSavePost = useCallback(() => {
     const networkPostPostObject = buildBodyNetworkPost();
-    const method = !!postProps?.id ? 'PATCH' : 'POST';
     const newNetworkPost = method === 'PATCH' ? { id: postProps?.id, ...networkPostPostObject } : networkPostPostObject;
     const canSave = canSaveNetworkPost(networkPostPostObject);
 
@@ -65,7 +67,7 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
     <PostManagerStyles {...props} className={PostManagerClassName}>
       <div className='post-manager-content'>
         <div className='title-wrapper'>
-          <span className='title'>{'What’s on your mind?'}</span>
+          <span className='title'>{title}</span>
         </div>
         <div className='post-manager-fields'>
           <div className='field --field-title'>
@@ -94,7 +96,7 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
             </div>
           </div>
           <div className='submit-wrapper'>
-            <Button text='CREATE' onClick={handleClickSavePost} />
+            <Button text={submitText} onClick={handleClickSavePost} />
           </div>
         </div>
       </div>
