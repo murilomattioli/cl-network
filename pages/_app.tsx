@@ -3,18 +3,10 @@ import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import store from '../redux'
 
-function MyApp({ Component, pageProps, router }: AppProps) {
-  // const componentProps = useMemo(() => {
-  //   const hasProps = (Object.entries(pageProps)?.length > 0) &&
-  //     !(Array.isArray(pageProps)) &&
-  //     (pageProps !== null) &&
-  //     (pageProps !== undefined);
+export type RoutesNames = 'Signup' | 'Network';
+export const DEFAULT_AUTH_ROUTE: RoutesNames = 'Network';
 
-  //   if (hasProps) {
-  //     return pageProps;
-  //   } else return {}
-  // }, []);
-
+const MyApp = ({ Component, pageProps, router }: AppProps) => {
   return (
     <>
       <Provider store={store}>
@@ -23,4 +15,4 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     </>
   );
 }
-export default MyApp
+export default MyApp;

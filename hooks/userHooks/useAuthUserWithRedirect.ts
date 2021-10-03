@@ -1,7 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import { useCallback } from "react";
 import userHooks from ".";
-import { DEFAULT_AUTH_ROUTE, RoutesNames } from "../../pages/Constants";
+import { DEFAULT_AUTH_ROUTE, RoutesNames } from "../../pages/_app";
 
 type ReturnProps = [(authTarget?: RoutesNames) => void];
 
