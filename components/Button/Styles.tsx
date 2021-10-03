@@ -2,7 +2,15 @@ import styled from "styled-components";
 import { ButtonProperties, BUTTON_WIDTH, BUTTON_HEIGHT } from ".";
 import { Colors } from '../../styles/Colors';
 
-export const ButtonStyles = styled.div<ButtonProperties>`
+export const ButtonStyles = styled.div<{
+  text?: string;
+  icon?: 'edit' | 'trash' | 'signOutAlt';
+  height?: number;
+  className?: string;
+  disabled?: boolean;
+  color?: 'black' | 'white';
+  onClick?: (value?: string) => void
+}>`
   display: flex;
   flex: 1;
   flex-direction: column;
