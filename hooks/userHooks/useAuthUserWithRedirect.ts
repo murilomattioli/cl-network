@@ -11,7 +11,6 @@ export default (): ReturnProps => {
   const [validateUser] = userHooks.useValidateUser();
 
   const useAuthUserWithRedirect = useCallback((authTarget?: RoutesNames): void => {
-    console.log('Authenticating...');
     const user = getUser();
     const isValidUser = validateUser(user);
     

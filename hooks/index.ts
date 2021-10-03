@@ -1,5 +1,2 @@
-import userHooks from './User';
-
-export default {
-  userHooks
-}
+export * from './networkPostsHooks';
+export * from './userHooks';
