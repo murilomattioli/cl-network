@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { useRouter } from 'next/dist/client/router';
-import { DELETE_NETWORK_POST_CONFIRM_TITLE, ModalConfirm, ModalCustom, PageNetwork, PostManager } from '../../components';
+import { ModalConfirm, ModalCustom, PageNetwork, PostManager } from '../../components';
 import networkPostsHooks from '../../hooks/networkPostsHooks';
 export interface NetworkProps {
   className?: string,
@@ -29,7 +29,7 @@ const Network: React.FC<NetworkProps> = props => {
     <React.Fragment>
       <PageNetwork {...props} />
       {showDeleteModal && (
-        <ModalConfirm title={DELETE_NETWORK_POST_CONFIRM_TITLE} onConfirm={handleDeleteNetworkPost} />
+        <ModalConfirm title='Are you sure you want to delete this item?' onConfirm={handleDeleteNetworkPost} />
       )}
       {showEditModal && patchItem && (
         <ModalCustom onClickClose={onClosePostManagerModal} component={<PostManager {...patchItem} onSave={onClosePostManagerModal} />} />
