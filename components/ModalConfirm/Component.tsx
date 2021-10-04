@@ -3,6 +3,7 @@ import { ModalConfirmProps } from '.';
 import { ModalConfirmStyles } from './Styles';
 import { Button } from '..';
 import { useRouter } from 'next/dist/client/router';
+import { motion } from 'framer-motion';
 
 const ModalConfirmComponentNoMemo: React.FC<ModalConfirmProps> = (props) => {
   const {
@@ -29,7 +30,12 @@ const ModalConfirmComponentNoMemo: React.FC<ModalConfirmProps> = (props) => {
   return (
     //@ts-ignore
     <ModalConfirmStyles className={modalConfirmClassName}>
-      <div className='content'>
+      <motion.div
+        className='content'
+        initial={{ opacity: 0, scale: 1.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: .2 }}
+      >
         <div className='title-wrapper'>
           <span className='title'>{title}</span>
         </div>
@@ -49,7 +55,7 @@ const ModalConfirmComponentNoMemo: React.FC<ModalConfirmProps> = (props) => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </ModalConfirmStyles>
   );
 }

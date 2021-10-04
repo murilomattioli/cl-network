@@ -1,7 +1,7 @@
+import { motion } from 'framer-motion';
 import React, { useMemo } from 'react';
 import { ModalCustomProps } from '.';
 import { ModalCustomStyles } from './Styles';
-import { useRouter } from 'next/dist/client/router';
 
 const ModalCustomComponentNoMemo: React.FC<ModalCustomProps> = (props) => {
   const {
@@ -14,10 +14,21 @@ const ModalCustomComponentNoMemo: React.FC<ModalCustomProps> = (props) => {
   return (
     //@ts-ignore
     <ModalCustomStyles className={modalCustomClassName}>
-      <div className="background-modal" onClick={onClickClose} />
-      <div className='content'>
+      <motion.div
+        className="background-modal"
+        onClick={onClickClose}
+        initial={{ opacity: 0, scale: 1.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: .2 }}
+      />
+      <motion.div
+        className='content'
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: .2 }}
+      >
         {component}
-      </div>
+      </motion.div>
     </ModalCustomStyles>
   );
 }

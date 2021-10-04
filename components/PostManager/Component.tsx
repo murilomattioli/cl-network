@@ -5,6 +5,7 @@ import { BodyPostNetworkPost } from '../../actions/NetworkPosts/types';
 import userHooks from '../../hooks/userHooks';
 import networkPostsHooks from '../../hooks/networkPostsHooks';
 import { PostManagerStyles } from './Styles';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
   const {
@@ -65,7 +66,12 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
   return (
     //@ts-ignore
     <PostManagerStyles {...props} className={PostManagerClassName}>
-      <div className='post-manager-content'>
+      <motion.div
+        className='post-manager-content'
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: .2 }}
+      >
         <div className='title-wrapper'>
           <span className='title'>{title}</span>
         </div>
@@ -99,7 +105,7 @@ const PostManagerComponentNoMemo: React.FC<PostManagerProps> = (props) => {
             <Button text={submitText} onClick={handleClickSavePost} />
           </div>
         </div>
-      </div>
+      </motion.div>
     </PostManagerStyles>
   );
 }

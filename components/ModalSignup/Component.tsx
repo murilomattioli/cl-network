@@ -10,6 +10,7 @@ import { ModalSignupStyles } from './Styles';
 import { Button, Input } from '..';
 import userHooks from '../../hooks/userHooks';
 import { UserType } from '../../hooks/userHooks/types';
+import { motion } from 'framer-motion';
 
 const ModalSignupComponentNoMemo: React.FC<ModalSignupProps> = (props) => {
   const {
@@ -43,7 +44,12 @@ const ModalSignupComponentNoMemo: React.FC<ModalSignupProps> = (props) => {
   return (
     //@ts-ignore
     <ModalSignupStyles {...props} className={ModalSignupClassName}>
-      <div className='content'>
+      <motion.div
+        className='content'
+        initial={{ opacity: 0, scale: 1.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: .2 }}
+      >
         <div className='title-wrapper'>
           <span className='title'>{SIGN_UP_MODAL_TITLE}</span>
         </div>
@@ -65,7 +71,7 @@ const ModalSignupComponentNoMemo: React.FC<ModalSignupProps> = (props) => {
             disabled={!isValidUsername}
           />
         </div>
-      </div>
+      </motion.div>
     </ModalSignupStyles>
   );
 }
